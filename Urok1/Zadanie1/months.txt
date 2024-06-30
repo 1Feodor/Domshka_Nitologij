@@ -4,7 +4,7 @@ enum class months : short { Exit, January, February, March
 , April, May, June, July, August, September, October,
 November, December} month;
 
-short Konvert_Strim();
+short Konvert_Consol();
 
 int main()
 {
@@ -13,7 +13,7 @@ int main()
 	do
 	{
 		std::cout << "Введите номер месяца: ";
-		month = static_cast<months>(Konvert_Strim());
+		month = static_cast<months>(Konvert_Consol());
 		switch (month)
 		{
 		case months::Exit:
@@ -92,12 +92,13 @@ int main()
 	return 0;
 }
 
-short Konvert_Strim()
+short Konvert_Consol()
 {
+	char znak1 = '\0';
 	short buf = 0;
 	for (int i = 0; i < 3; i++)    // Ограничеваю проверку символов тремя элементами
 	{
-		char znak1 = std::cin.get();  // читаю из буфера посимвольно
+		znak1 = std::cin.get();  // читаю из буфера посимвольно
 		if (znak1 == '\n')
 		{
 			if (!i)		// если строка пуста

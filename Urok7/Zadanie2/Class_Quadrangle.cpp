@@ -4,6 +4,16 @@ Quadrangle::Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D)
 {
 	Set_Name_Fig();
 	Set_Stron();
+	if (storona != 4)
+	{
+		this->~Quadrangle();
+		Domain_error{ "количество сторон не равно 4." };
+	}
+	else if (A + B + C + D != 360)
+	{
+		this->~Quadrangle();
+		Domain_error{ "сумма углов не равна 360." };
+	}
 	Num_Stron_Corner();
 	this->h[dlinna::a] = a;
 	this->h[dlinna::b] = b;
@@ -13,7 +23,6 @@ Quadrangle::Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D)
 	this->ugl[ugol::B] = B;
 	this->ugl[ugol::C] = C;
 	this->ugl[ugol::D] = D;
-	Print_error();
 }
 
 Quadrangle ::~Quadrangle()
@@ -45,13 +54,4 @@ bool Quadrangle::check()
 		return false;
 	}
 	return true;
-}
-
-void Quadrangle::Print_error()
-{
-	if (!check())
-	{
-		this->~Quadrangle();
-		throw std::string{ "сумма углов не равна 360." };
-	}
 }

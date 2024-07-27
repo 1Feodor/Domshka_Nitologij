@@ -1,11 +1,10 @@
 #pragma once
-class Domain_error
+//#include <exception>
+#include <stdexcept>
+
+class Domain_error : public std::exception
 {
 public:
-	Domain_error();
+	Domain_error(const char*);
 	~Domain_error();
-protected:
-	virtual void Print_error() = 0;
 };
-
-#include "Class_Figure.h"

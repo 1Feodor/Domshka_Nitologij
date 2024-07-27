@@ -1,6 +1,9 @@
 #include <iostream>
 #include <Windows.h>
 #include <string.h>
+#include <exception>
+//#include <stdexcept>
+
 
 int function(std::string const, int const);
 
@@ -30,6 +33,16 @@ int main()
 			std::cout << bad_length;
 			flag = !flag;
 		}
+		catch (const std::domain_error& e)
+		{
+			std::cerr << e.what() << std::endl;
+			flag = !flag;
+		}
+		catch (const std::exception& e)
+		{
+			//std::cerr << "Caught: " << e.what() << std::endl;
+			std::cerr << "Type: " << typeid(e).name() << std::endl;
+		}
 		catch(...){}
 	} while (flag);
 	std::cout << "До свидания\n";
@@ -40,7 +53,7 @@ int function(std::string const str, int const forbidden_length)
 {
 	if (str.length() == forbidden_length)
 	{
-		throw std::string { "Вы ввели слово запретной длины! " };
+		throw std::exception{ "Вы ввели слово запретной длины! " };
 	}
 	return str.length();
 }

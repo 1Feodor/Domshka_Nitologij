@@ -3,8 +3,13 @@
 Figure::Figure()
 {
 	Set_Stron();
+	if (storona != 0)
+	{
+		this->~Figure();
+		Domain_error{ "Количество сторон больше 0." };
+	}
 	Set_Name_Fig();
-	Print_error();
+
 }
 
 Figure::~Figure()
@@ -56,15 +61,6 @@ bool Figure::check()
 		return false;
 	}
 	return true;
-}
-
-void Figure::Print_error()
-{
-	if (!check())
-	{
-		this->~Figure();
-		throw std::string{ "количество сторон не равно 0." };
-	}
 }
 
 void Figure::Set_Stron()

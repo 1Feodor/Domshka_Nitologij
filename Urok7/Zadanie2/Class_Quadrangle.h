@@ -11,7 +11,6 @@ protected:
 	void Set_Stron();
 	void Set_Name_Fig();
 	bool check() override;
-	void Print_error() override;
 };
 
 #include "Class_Parallelogram.h"

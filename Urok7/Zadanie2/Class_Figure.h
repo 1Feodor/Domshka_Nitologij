@@ -6,7 +6,7 @@
 enum dlinna : int { a, b, c, d };
 enum ugol : int { A, B, C, D };
 
-class Figure : public Domain_error
+class Figure
 {
 public:
 	Figure();
@@ -25,7 +25,6 @@ protected:
 	std::string get_side_length()const;
 	std::string get_side_corner()const;
 	virtual bool check();
-	void Print_error() override;
 };
 
 #include "Class_Triangle.h"

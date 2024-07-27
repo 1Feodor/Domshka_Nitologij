@@ -9,7 +9,6 @@ public:
 protected:
 	void Set_Name_Fig();
 	bool check() override;
-	void Print_error() override;
 };
 
 #include "Class_Reectangle.h"

@@ -2,6 +2,14 @@
 
 Isosceles_Triangle::Isosceles_Triangle(int a, int b, int A, int B) : Triangle(a, b, a, A, B, A)
 {
+	if (A != Triangle::ugl[ugol::C])
+	{
+		throw std::exception{ "угол \"А\" не равен углу \"С\"." };
+	}
+	else if (a != Triangle::h[dlinna::a])
+	{
+		throw std::exception{ "сторона \"а\" не равен стороне \"с\"." };
+	}
 	Set_Name_Fig();
 }
 

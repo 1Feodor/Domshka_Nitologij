@@ -5,6 +5,16 @@ Triangle::Triangle(int a, int b, int c, int A, int B, int C)
 
 	Set_Name_Fig();
 	Set_Stron();
+	if (storona != 3)
+	{
+		this->~Triangle();
+		Domain_error{ "количество сторон не равно 3." };
+	}
+	else if (A + B + C != 180)
+	{
+		this->~Triangle();
+		Domain_error{ "сумма углов не равна 180." };
+	}
 	Num_Stron_Corner();
 	this->h[dlinna::a] = a;
 	this->h[dlinna::b] = b;
@@ -12,7 +22,6 @@ Triangle::Triangle(int a, int b, int c, int A, int B, int C)
 	this->ugl[ugol::A] = A;
 	this->ugl[ugol::B] = B;
 	this->ugl[ugol::C] = C;
-	Print_error();
 }
 
 Triangle::~Triangle()
@@ -44,13 +53,4 @@ bool Triangle::check()
 		return false;
 	}
 	return true;
-}
-
-void Triangle::Print_error()
-{
-	if (!check())
-	{
-		this->~Triangle();
-		throw std::string{ "сумма углов не равна 180." };
-	}
 }

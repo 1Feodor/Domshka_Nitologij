@@ -2,6 +2,10 @@
 
 Square::Square(int a) : Reectangle(a, a)
 {
+	if (Quadrangle::h[dlinna::a] != Quadrangle::h[dlinna::c] || Quadrangle::h[dlinna::b] != Quadrangle::h[dlinna::d] || Quadrangle::h[dlinna::b] != Quadrangle::h[dlinna::a])
+	{
+		throw std::exception{ "стороны \"a\",\"c\",\"b\",\"d\" не равен." };
+	}
 	Set_Name_Fig();
 }
 

@@ -2,8 +2,15 @@
 
 Parallelogram::Parallelogram(int a, int b, int A, int B) : Quadrangle(a, b, a, b, A, B, A, B)
 {
+	if (Quadrangle::ugl[ugol::A] != Quadrangle::ugl[ugol::C] || Quadrangle::ugl[ugol::B] != Quadrangle::ugl[ugol::D])
+	{
+		throw std::exception{ "углы \"A\",\"C\" и \"B\",\"D\" попарно не равны." };
+	}
+	else if (Quadrangle::h[dlinna::a] != Quadrangle::h[dlinna::c] || Quadrangle::h[dlinna::b] != Quadrangle::h[dlinna::d])
+	{
+		throw std::exception{ "стороны \"a\",\"c\" и \"b\",\"d\" попарно не равен." };
+	}
 	Set_Name_Fig();
-	Print_error();
 }
 
 Parallelogram::~Parallelogram()
@@ -22,13 +29,4 @@ bool Parallelogram::check()
 		return false;
 	}
 	return true;
-}
-
-void Parallelogram::Print_error()
-{
-	if (!check())
-	{
-		this->~Parallelogram();
-		throw std::string{ "углы попарно не равны, стороны попарно не равны" };
-	}
 }

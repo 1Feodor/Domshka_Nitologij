@@ -1,7 +1,6 @@
 # CMakeList.txt: проект CMake для Leaver_CMake; включите исходный код и определения,
 # укажите здесь логику для конкретного проекта.
 #
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../Racing_Simulator)
 
 project ("Menu")
 

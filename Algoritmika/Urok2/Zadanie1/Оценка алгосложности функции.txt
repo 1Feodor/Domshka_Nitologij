@@ -1,0 +1,10 @@
+Для оценки дана функция:
+
+unsigned long long cisloFi(int fi)
+{
+	if (fi == 1) return 1;
+	if (fi == 0) return 0;
+	return cisloFi(fi - 1) + cisloFi(fi - 2);
+}
+Объём памяти занимаемый функцией составляет O(1).
+Время работы функции = O(2 в степени n).

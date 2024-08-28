@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <Windows.h>
 
 int* append_to_dynamic_array(int*, int*, int*, int);
@@ -7,22 +7,24 @@ void print_dynamic_array(int*, int, int);
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8);
 
 	int capacity{ 0 };
 	int size{ 0 };
 
-	std::cout << "Ââåäèòå ôàêòè÷åcêèé ðàçìåð ìàññèâà: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµcÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	std::cin >> capacity;
 
-	std::cout << "Ââåäèòå ëîãè÷åñêèé ðàçìåð ìàññèâà: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	std::cin >> size;
 
 
 	if (size > capacity)
 	{
-		std::cout << "Îøèáêà! Ëîãè÷åñêèé ðàçìåð ìàññèâà íå ìîæåò ïðåâûøàòü ôàêòè÷åñêèé!\n";
+		std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð›Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹!\n";
 		return 1;
 		capacity = size;
 	}
@@ -31,11 +33,11 @@ int main()
 
 	for (int i = 0; i < size; ++i)
 	{
-		std::cout << "Ââåäèòå arr[" << i << "]: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ arr[" << i << "]: ";
 		std::cin >> *(arr + i);
 	}
 
-	std::cout << "Äèíàìè÷åñêèé ìàññèâ: ";
+	std::cout << "Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
 	print_dynamic_array(arr, size, capacity);
 	std::cout << std::endl;
@@ -43,22 +45,22 @@ int main()
 	int value{ 0 };
 	do
 	{
-		std::cout << "Ââåäèòå ýëåìåíò äëÿ äîáàâëåíèÿ: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð´Ð»Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ: ";
 		std::cin >> value;
 		if (!value)
 		{
-			std::cout << "Ñïàñèáî! Âàø ìàññèâ: ";
+			std::cout << "Ð¡Ð¿Ð°ÑÐ¸Ð±Ð¾! Ð’Ð°Ñˆ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
 			print_dynamic_array(arr, size, capacity);
 			std::cout << std::endl;
 			break;
 		}
-	std::cout << "Äèíàìè÷åñêèé ìàññèâ: ";
+		std::cout << "Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
-	arr = append_to_dynamic_array(arr, &size, &capacity, value);
+		arr = append_to_dynamic_array(arr, &size, &capacity, value);
 
-	print_dynamic_array(arr, size, capacity);
-	std::cout << std::endl;
+		print_dynamic_array(arr, size, capacity);
+		std::cout << std::endl;
 	} while (true);
 
 	delete[] arr;

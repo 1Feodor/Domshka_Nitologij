@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <Windows.h>
 #include <string>
 
@@ -9,22 +9,24 @@ void print_dynamic_array(int*, int, int);
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8);
 
 	int capacity{ 0 };
 	int size{ 0 };
 
-	std::cout << "Ââåäèòå ôàêòè÷åcêèé ðàçìåð ìàññèâà: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµcÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	std::cin >> capacity;
 
-	std::cout << "Ââåäèòå ëîãè÷åñêèé ðàçìåð ìàññèâà: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
 	std::cin >> size;
 
 
 	if (size > capacity)
 	{
-		std::cout << "Îøèáêà! Ëîãè÷åñêèé ðàçìåð ìàññèâà íå ìîæåò ïðåâûøàòü ôàêòè÷åñêèé!\n";
+		std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð›Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹!\n";
 		return 1;
 		capacity = size;
 	}
@@ -33,11 +35,11 @@ int main()
 
 	for (int i = 0; i < size; ++i)
 	{
-		std::cout << "Ââåäèòå arr[" << i << "]: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ arr[" << i << "]: ";
 		std::cin >> *(arr + i);
 	}
 
-	std::cout << "Äèíàìè÷åñêèé ìàññèâ: ";
+	std::cout << "Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
 	print_dynamic_array(arr, size, capacity);
 	std::cout << std::endl;
@@ -46,11 +48,11 @@ int main()
 
 	do
 	{
-		std::cout << "Óäàëèòü ïåðâûé ýëåìåíò? ";
+		std::cout << "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿ÐµÑ€Ð²Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚? ";
 		std::cin >> value;
-		if (value == "íåò")
+		if (value == "Ð½ÐµÑ‚")
 		{
-			std::cout << "Ñïàñèáî! Âàø äèíàìè÷åñêèé ìàññèâ: ";
+			std::cout << "Ð¡Ð¿Ð°ÑÐ¸Ð±Ð¾! Ð’Ð°Ñˆ Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
 			print_dynamic_array(arr, size, capacity);
 			std::cout << std::endl;
@@ -58,10 +60,10 @@ int main()
 		}
 		if (!size)
 		{
-			std::cout << "Íåâîçìîæíî óäàëèòü ïåðâûé ýëåìåíò, òàê êàê ìàññèâ ïóñòîé. Äî ñâèäàíèÿ!";
+			std::cout << "ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿ÐµÑ€Ð²Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚, Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¼Ð°ÑÑÐ¸Ð² Ð¿ÑƒÑÑ‚Ð¾Ð¹. Ð”Ð¾ ÑÐ²Ð¸Ð´Ð°Ð½Ð¸Ñ!";
 			break;
 		}
-		std::cout << "Äèíàìè÷åñêèé ìàññèâ: ";
+		std::cout << "Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: ";
 
 		arr = remove_dynamic_array_head(arr, &size, &capacity);
 
@@ -76,24 +78,26 @@ int main()
 int* remove_dynamic_array_head(int* arr, int* logical_size, int* actual_size)
 {
 	--*logical_size;
-	for (int i = 0; i < *logical_size; i++)
-		{
-			arr[i] = arr[i + 1];
-		}
-	arr[*logical_size] = 0;
-
+	
 	if (*actual_size / 3 >= *logical_size && *actual_size / 3)
 	{
 		*actual_size /= 3;
-
 		int* arr1 = new int[*actual_size] {0};
 		for (int i = 0; i < *actual_size; i++)
 		{
-			arr1[i] = arr[i];
+			arr1[i] = arr[i + 1];
 		}
 		delete[] arr;
 		arr = arr1;
 		arr1 = nullptr;
+	}
+	else
+	{
+		for (int i = 0; i < *logical_size; i++)
+		{
+			arr[i] = arr[i + 1];
+		}
+		arr[*logical_size] = 0;
 	}
 	return arr;
 }

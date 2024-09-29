@@ -67,7 +67,8 @@ int smart_array::get_element(int ind)
 
 void smart_array::increased_capacity()
 {
-	int* arr1 = new int[this->capacity + 5];
+	this->capacity += 5;
+	int* arr1 = new int[this->capacity];
 	for (int i = 0; i < this->size; i++)
 	{
 		arr1[i] = this->arr[i];

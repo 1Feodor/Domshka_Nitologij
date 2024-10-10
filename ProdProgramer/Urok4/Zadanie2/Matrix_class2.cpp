@@ -2,14 +2,32 @@
 #include <Windows.h>
 
 template <class T>
+class Proxy {
+public:
+	Proxy(T* line_ptr, int column) : line_ptr{ line_ptr }, proxy_column{ column } {}
+	T& operator[](int col)
+	{
+		if (col < 0 || col >= this->proxy_column)
+		{
+			throw std::exception("Error: index column outside the array!");
+		}
+		return this->line_ptr[col];
+	}
+private:
+	T* line_ptr;
+	int proxy_column;
+};
+
+template <class T>
 class Matrix
 {
 public:
 	Matrix(int, int);
 	~Matrix();
-	auto operator [](int);
-	//auto operator [](int)const;
+	Proxy<T> operator[](int);
 	int GetSize()const;
+	//Matrix(const Matrix&) = delete;//запрещаем конструктор копирования
+	Matrix& operator= (const Matrix&) = delete; //запрещаем оператор присваивания
 private:
 	int line;
 	int column;
@@ -24,7 +42,7 @@ Matrix<T>::Matrix(int line, int column) : line{ line }, column{ column }, size{ 
 	{
 		throw std::exception("Error: capacity < 1");
 	}
-	this->arr = new T*[this->line];
+	this->arr = new T * [this->line];
 	for (int i = 0; i < this->line; i++)
 	{
 		this->arr[i] = new T[this->column]{ 0 };
@@ -46,9 +64,13 @@ Matrix<T>::~Matrix()
 }
 
 template<class T>
-auto Matrix<T>::operator[](int elem)
+Proxy<T> Matrix<T>::operator[](int lin)
 {
-	return this->arr[elem];
+	if (lin < 0 || lin >= this->line)
+	{
+		throw std::exception("Error: index line outside the array!");
+	}
+	return Proxy<T>(this->arr[lin], this->column);
 }
 
 template<class T>
@@ -57,25 +79,19 @@ int Matrix<T>::GetSize()const
 	return this->size;
 }
 
-//template<class T>
-//auto Matrix<T>::operator[](int elem) const
-//{
-//	return this->arr[elem];
-//}
-
 int main()
 {
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
 
-	auto mm = Matrix<const char*>(2,3);
+	auto mm{ Matrix<const char*>(2,3) };
+	//Matrix<const char*> mm (2,3);
 	mm[0][0] = "Masha";
 	mm[0][1] = "Glasha";
-	////// для кириллицы, почему-то, нужно собрать на х86 платформе (на х64 кириллицу не видно)
 	mm[1][0] = "Серожа";
 	mm[1][1] = "Никита";
 	auto gg = mm[1][1];
-	//std::cout << "fff " << std::endl;
+	
 	std::cout << mm[0][0] << std::endl;
 	std::cout << mm[0][1] << std::endl;
 	std::cout << mm[1][0] << std::endl;

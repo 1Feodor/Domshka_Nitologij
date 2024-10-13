@@ -45,7 +45,7 @@ Matrix<T>::Matrix(int line, int column) : line{ line }, column{ column }, size{ 
 	this->arr = new T * [this->line];
 	for (int i = 0; i < this->line; i++)
 	{
-		this->arr[i] = new T[this->column]{ 0 };
+		this->arr[i] = new T[this->column];
 	}
 }
 

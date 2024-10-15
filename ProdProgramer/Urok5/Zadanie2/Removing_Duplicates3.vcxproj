@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{024be3d6-213a-472d-99e5-2c80eb819de2}</ProjectGuid>
-    <RootNamespace>RemovingDuplicates2</RootNamespace>
+    <ProjectGuid>{dd5c061e-fb45-42df-b479-344cc4ab6c8a}</ProjectGuid>
+    <RootNamespace>RemovingDuplicates3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Removing_Duplicates2.cpp" />
+    <ClCompile Include="Removing_Duplicates3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

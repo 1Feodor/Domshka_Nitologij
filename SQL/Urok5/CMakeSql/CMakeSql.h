@@ -10,13 +10,13 @@ class Persons
 public:
 	Persons();
 	~Persons();
-	void add_client(const std::vector<std::string>&);
-	void add_phone(const std::vector<std::string>&);
-	void update_client(const std::vector<std::string>&);
-	void delete_phone(const std::vector<std::string>&);
-	void delete_client(const std::vector<std::string>&);
-	pqxx::work& get();		// Каким образом реализовать метод для поика клиента по его данным
-							// у меня идей нет. 
+	void add_client(const int person_Id, const std::string& firstName, const std::string& lastName, const std::string& email);
+	void add_phone(const int phone_Id, const int id_person, const std::string& phoneNumber);
+	void update_client(const int person_Id, const std::string& email);
+	void delete_phone(const std::string& phoneNumber);
+	void delete_client(const int person_Id);
+	pqxx::internal::result_iteration<int, std::string, std::string, std::string> find_client(const std::string& select_from_person);
+	pqxx::internal::result_iteration<int, int, std::string> find_phone(const std::string& select_from_phone);
 	void create_table();
 	void drop_table();
 private:

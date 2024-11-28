@@ -1,4 +1,4 @@
-#include "CMakeSql.h"
+ï»¿#include "CMakeSql.h"
 
 Persons::Persons()
 {
@@ -16,38 +16,43 @@ Persons::Persons()
 Persons::~Persons()
 {
 	this->ip.commit();
-	std::cout << "\nÏðèâåò CMake." << std::endl;
+	std::cout << "\nÐŸÑ€Ð¸Ð²ÐµÑ‚ CMake." << std::endl;
 }
 
-void Persons::add_client(const std::vector<std::string>& client)
+void Persons::add_client(const int person_Id, const std::string& firstName, const std::string& lastName, const std::string& email)
 {
-	this->r = this->ip.exec_prepared("insert_person", client[0], client[1], client[2], client[3]);
+	this->r = this->ip.exec_prepared("insert_person", person_Id, firstName, lastName, email);
 }
 
-void Persons::add_phone(const std::vector<std::string>& number)
+void Persons::add_phone(const int phone_Id, const int id_person, const std::string& phoneNumber)
 {
-	this->r = this->ip.exec_prepared("insert_phone", number[0], number[1], number[2]);
+	this->r = this->ip.exec_prepared("insert_phone", phone_Id, id_person, phoneNumber);
 }
 
-void Persons::update_client(const std::vector<std::string>& updatePerson)
+void Persons::update_client(const int person_Id, const std::string& email)
 {
-	this->r = this->ip.exec_prepared("update_person_email", updatePerson[0], updatePerson[1]);
+	this->r = this->ip.exec_prepared("update_person_email", person_Id, email);
 }
 
-void Persons::delete_phone(const std::vector<std::string>& deletePhone)
+void Persons::delete_phone(const std::string& phoneNumber)
 {
-	this->r = this->ip.exec_prepared("delete_phone", deletePhone[0]);
+	this->r = this->ip.exec_prepared("delete_phone", phoneNumber);
 }
 
-void Persons::delete_client(const std::vector<std::string>& deletePerson)
+void Persons::delete_client(const int person_Id)
 {
-	this->r = this->ip.exec_prepared("delete_id_phone", deletePerson[0]);
-	this->r = this->ip.exec_prepared("delete_person", deletePerson[0]);
+	this->r = this->ip.exec_prepared("delete_id_phone", person_Id);
+	this->r = this->ip.exec_prepared("delete_person", person_Id);
 }
 
-pqxx::work& Persons::get()
+pqxx::internal::result_iteration<int, std::string, std::string, std::string> Persons::find_client(const std::string& select_from_person)
 {
-	return this->ip;
+	return this->ip.query<int, std::string, std::string, std::string>(select_from_person);
+}
+
+pqxx::internal::result_iteration<int, int, std::string> Persons::find_phone(const std::string& select_from_phone)
+{
+	return this->ip.query<int, int, std::string>(select_from_phone);
 }
 
 void Persons::create_table()

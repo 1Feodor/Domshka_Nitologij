@@ -22,7 +22,7 @@ public:
 
 	void warning_message(Warnings_and_Errors& handler, const std::string& message) override
 	{
-		if (typeid(Warning_message) == typeid(handler))
+		if (typeid(*this) == typeid(handler))
 		{
 			std::cout << message << std::endl;
 		}
@@ -47,7 +47,7 @@ public:
 
 	void warning_message(Warnings_and_Errors& handler, const std::string& message) override
 	{
-		if (typeid(Error_message) == typeid(handler))
+		if (typeid(*this) == typeid(handler))
 		{
 			std::ofstream myFile(this->file_name, std::ios::app);
 
@@ -74,7 +74,7 @@ public:
 
 	void warning_message(Warnings_and_Errors& handler, const std::string& message) override
 	{
-		if (typeid(FatalError_message) == typeid(handler))
+		if (typeid(*this) == typeid(handler))
 		{
 			throw std::exception(message.c_str());
 		}

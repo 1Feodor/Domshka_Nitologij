@@ -3,6 +3,7 @@
 
 #include <QProcess>
 #include <QMainWindow>
+#include "dialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,17 +20,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pB_notepad_clicked();
-
-    void on_lE_host_textChanged(const QString &arg1);
-
-    void on_lE_bd_textChanged(const QString &arg1);
-
-    void on_lE_login_textChanged(const QString &arg1);
-
-    void on_lE_password_textChanged(const QString &arg1);
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Dialog * my_dialog;
 };
 #endif // MAINWINDOW_H

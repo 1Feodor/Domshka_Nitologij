@@ -44,11 +44,11 @@ void MainWindow::on_pB_start_toggled(bool checked)
         ui->pB_circle->setEnabled(true);
         ui->pB_start->setText("Стоп");
         ui->pB_clear->setEnabled(false);
-        time->start();
+        sig->start_timer(time);
     }
     else
     {
-        time->stop();
+        sig->stop_timer(time);
         ui->pB_circle->setEnabled(false);
         ui->pB_start->setText("Старт");
         ui->pB_clear->setEnabled(true);
@@ -73,13 +73,13 @@ void MainWindow::on_pB_circle_clicked()
     ui->tE_info->append(QString("Круг №%1        ").arg(size_circle) + sig->get_time_circle() + "                   " + sig->get_time_seconds());
 }
 
-void MainWindow::slot_size_circle(QString buf)
+void MainWindow::slot_size_circle(QString value)
 {
-    ui->lN_timer_H->display(buf);
+    ui->lN_timer_H->display(value);
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    maus_xY->setText(QString("Координаты мыши: X=%1 - Y=%2").arg(event->x()).arg(event->y()));
+    maus_xY->setText(QString("Координаты мыши: X=%1 - Y=%2").arg(event->position().x()).arg(event->position().y()));
 }
 

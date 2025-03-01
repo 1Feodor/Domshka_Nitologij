@@ -2,6 +2,7 @@
 #define SIGNAL_TIME_H
 
 #include <QObject>
+#include <QTimer>
 
 class Signal_time : public QObject
 {
@@ -11,6 +12,9 @@ public:
     void set_countdown_zero();
     QString get_time_seconds();
     QString get_time_circle();
+    void start_timer(QTimer*);
+    void stop_timer(QTimer*);
+
 public slots:
     void slot_timer();
 

@@ -20,6 +20,16 @@ QString Signal_time::get_time_circle()
     return this->time_circle;
 }
 
+void Signal_time::start_timer(QTimer *time)
+{
+    time->start();
+}
+
+void Signal_time::stop_timer(QTimer *time)
+{
+    time->stop();
+}
+
 void Signal_time::slot_timer()
 {
     Cislo_Wo_Wrema(++this->countdown, &this->time_seconds);

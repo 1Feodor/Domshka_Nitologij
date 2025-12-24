@@ -6,7 +6,7 @@ Http_Client::Http_Client(QObject *parent)
     manager = new QNetworkAccessManager(this);
     request = new QNetworkRequest();
 
-    connect(manager, &QNetworkAccessManager::finished, this, &Http_Client::replyFinished);
+    connect(manager, &QNetworkAccessManager::finished, this, &Http_Client::replyFinished);  //14
 }
 
 Http_Client::~Http_Client()
@@ -15,7 +15,7 @@ Http_Client::~Http_Client()
     delete manager;
 }
 
-void Http_Client::getManager(QString *link)
+void Http_Client::getManager(QString *link)  //13
 {
     request->setUrl(QUrl(*link));
     manager->get(*request);
@@ -26,15 +26,15 @@ void Http_Client::getManager(QString *link)
     }
 }
 
-void Http_Client::replyFinished(QNetworkReply *reply)
+void Http_Client::replyFinished(QNetworkReply *reply)  //14
 {
     if(reply->error())
     {
-        emit sig_errorString();
-        qDebug() << "ERROR";
+        qDebug() << "ERROR" << " " << fff++;
         qDebug() << reply->errorString();
+        emit sig_errorString();  //15
     } else
     {
-        emit sig_Finished(reply);
+        emit sig_Finished(reply);  //16
     }
 }

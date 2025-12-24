@@ -24,6 +24,7 @@ private:
     QNetworkAccessManager *manager;
     QNetworkRequest *request;
     bool timeFlag = true;
+    int fff = 0;  //udalit
 };
 
 #endif // HTTP_CLIENT_H

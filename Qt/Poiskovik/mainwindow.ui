@@ -17,6 +17,18 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QGroupBox" name="gB_Search">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>60</height>
+       </size>
+      </property>
       <property name="title">
        <string>Введите текст</string>
       </property>
@@ -38,7 +50,18 @@
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="tE_Reply"/>
+     <layout class="QVBoxLayout" name="vL_Reply">
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

@@ -25,8 +25,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         http_client.h http_client.cpp
-        parser_html.h parser_html.cpp
-        headingfile.h headingfile.cpp headingfile.ui
+
+
+        database.h database.cpp
+        parser_html_1.h parser_html_1.cpp
+        splashscreen.h splashscreen.cpp splashscreen.ui
+        recursion.h recursion.cpp
+        mainpaint.h mainpaint.cpp
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Poiskovik APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
